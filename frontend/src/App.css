@@ -31,6 +31,7 @@
 
 body {
   min-height: 100vh;
+
   font-family: "Inter", system-ui, sans-serif;
 
   background:
@@ -39,6 +40,7 @@ body {
     linear-gradient(135deg, #f8fbff 0%, #eef2ff 100%);
 
   color: var(--text);
+
   overflow-x: hidden;
 }
 
@@ -49,8 +51,10 @@ body {
 /* ---------- APP LAYOUT ---------- */
 
 .app-shell {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1280px, calc(100% - 40px));
+
   margin: 0 auto;
+
   padding: 24px 0 60px;
 }
 
@@ -58,8 +62,10 @@ body {
 
 .app-header {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   margin-bottom: 30px;
 }
 
@@ -84,6 +90,7 @@ body {
   justify-content: center;
 
   color: white;
+
   font-weight: 800;
   font-size: 1.3rem;
 
@@ -93,12 +100,15 @@ body {
 .brand-title {
   font-size: 2rem;
   font-weight: 800;
+
   letter-spacing: -0.5px;
 }
 
 .brand-subtitle {
   margin-top: 4px;
+
   color: var(--muted);
+
   font-size: 1rem;
 }
 
@@ -117,12 +127,13 @@ body {
 /* ---------- AUTH CARD ---------- */
 
 .auth-card {
-  width: 150%;
-  max-width: 480px;
+  width: 100%;
+  max-width: 450px;
 
   background: var(--surface);
 
-  border-radius: 32px;
+  border-radius: 28px;
+
   overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -134,14 +145,15 @@ body {
   animation: fadeUp 0.5s ease;
 }
 
-/* ---------- HERO SECTION ---------- */
+/* ---------- HERO ---------- */
 
 .auth-hero {
   position: relative;
 
-  padding: 30px 25px;
+  padding: 28px 24px;
 
   text-align: center;
+
   color: white;
 
   background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
@@ -152,66 +164,61 @@ body {
 
   position: absolute;
 
-  width: 180px;
-  height: 180px;
+  width: 130px;
+  height: 130px;
 
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.08);
 
-  top: -70px;
-  right: -60px;
+  top: -50px;
+  right: -40px;
 }
 
 .auth-hero h2 {
   position: relative;
   z-index: 1;
 
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 
-  font-size: 2.7rem;
+  font-size: 2.1rem;
   font-weight: 800;
-
-  letter-spacing: -1px;
 }
 
 .auth-hero p {
   position: relative;
   z-index: 1;
 
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+
+  line-height: 1.5;
 
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* ---------- FORM ---------- */
+/* ---------- AUTH FORM ---------- */
 
 .auth-form {
-  padding: 30px;
+  padding: 26px;
 
   display: flex;
   flex-direction: column;
 
-  gap: 22px;
+  gap: 18px;
 }
-
-/* ---------- FORM ROW ---------- */
 
 .form-group {
   display: grid;
 
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 100px 1fr;
 
   align-items: center;
 
-  column-gap: 20px;
+  column-gap: 16px;
 }
 
-/* ---------- LABEL ---------- */
-
 .form-group label {
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-weight: 600;
 
   text-align: right;
@@ -223,18 +230,22 @@ body {
 
 .form-group input,
 .form-group select,
-.form-group textarea {
+.form-group textarea,
+.form-card input,
+.form-card select,
+.form-card textarea {
   width: 100%;
-  height: 52px;
 
-  padding: 0 16px;
+  padding: 14px 16px;
 
   border-radius: 14px;
+
   border: 1px solid rgba(148, 163, 184, 0.3);
 
   background: #f8fafc;
 
-  font-size: 1rem;
+  font-size: 0.96rem;
+
   color: var(--text);
 
   outline: none;
@@ -242,15 +253,19 @@ body {
   transition: all 0.25s ease;
 }
 
-.form-group textarea {
-  min-height: 120px;
-  padding-top: 14px;
+.form-group textarea,
+.form-card textarea {
+  min-height: 110px;
+
   resize: vertical;
 }
 
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
   background: white;
 
   border-color: #6366f1;
@@ -258,10 +273,11 @@ body {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
 }
 
-/* ---------- BUTTON ---------- */
+/* ---------- BUTTONS ---------- */
 
 .btn {
   border: none;
+
   border-radius: 14px;
 
   cursor: pointer;
@@ -273,11 +289,11 @@ body {
 }
 
 .btn-primary,
-.auth-form button {
+.auth-form button,
+.form-card button {
   width: 100%;
-  height: 54px;
 
-  margin-top: 10px;
+  height: 52px;
 
   background: linear-gradient(135deg, #2563eb, #4f46e5);
 
@@ -287,7 +303,8 @@ body {
 }
 
 .btn-primary:hover,
-.auth-form button:hover {
+.auth-form button:hover,
+.form-card button:hover {
   transform: translateY(-2px);
 
   box-shadow: 0 16px 35px rgba(37, 99, 235, 0.35);
@@ -300,7 +317,7 @@ body {
 
   color: var(--muted);
 
-  font-size: 0.96rem;
+  font-size: 0.95rem;
 }
 
 .auth-note a {
@@ -309,10 +326,6 @@ body {
   font-weight: 600;
 
   text-decoration: none;
-}
-
-.auth-note a:hover {
-  text-decoration: underline;
 }
 
 /* ---------- CARD ---------- */
@@ -331,10 +344,56 @@ body {
   padding: 24px;
 }
 
+/* ---------- FORM CARD ---------- */
+
+.form-card {
+  width: 100%;
+
+  min-width: 700px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  border: 1px solid rgba(148, 163, 184, 0.12);
+
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.08),
+    0 20px 48px rgba(15, 23, 42, 0.06);
+
+  backdrop-filter: blur(10px);
+}
+
+.form-card h3 {
+  margin-bottom: 24px;
+
+  font-size: 1.8rem;
+
+  font-weight: 800;
+
+  color: #0f172a;
+}
+
+.form-card form {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+.form-card textarea,
+.form-card button {
+  grid-column: 1 / -1;
+}
+
 /* ---------- GRID ---------- */
 
 .grid {
   display: grid;
+
   gap: 20px;
 }
 
@@ -378,12 +437,50 @@ body {
 
 .summary-card span {
   font-size: 2rem;
+
   font-weight: 800;
+}
+
+/* ---------- TASK & PROJECT CARD ---------- */
+
+.project-card,
+.task-card {
+  padding: 22px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid rgba(148, 163, 184, 0.12);
+
+  transition: 0.25s ease;
+}
+
+.project-card:hover,
+.task-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- MESSAGE ---------- */
+
+.message-banner {
+  padding: 14px 18px;
+
+  border-radius: 14px;
+
+  margin-top: 16px;
+
+  background: #eff6ff;
+
+  color: #1d4ed8;
+
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 /* ---------- ANIMATION ---------- */
 
 @keyframes fadeUp {
+
   from {
     opacity: 0;
     transform: translateY(24px);
@@ -397,10 +494,25 @@ body {
 
 /* ---------- RESPONSIVE ---------- */
 
+@media (max-width: 1100px) {
+
+  .form-card {
+    min-width: 100%;
+  }
+
+  .form-card form {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 900px) {
 
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -412,7 +524,9 @@ body {
 
   .app-header {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 14px;
   }
 
@@ -426,23 +540,28 @@ body {
   }
 
   .auth-hero {
-    padding: 40px 24px;
+    padding: 24px 18px;
   }
 
   .auth-hero h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .auth-form {
-    padding: 28px 22px;
+    padding: 22px;
   }
 
   .form-group {
     grid-template-columns: 1fr;
+
     gap: 8px;
   }
 
   .form-group label {
     text-align: left;
+  }
+
+  .form-card {
+    padding: 22px;
   }
 }
