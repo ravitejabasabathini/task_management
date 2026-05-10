@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const fs = require('fs');
 const path = require('path');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
@@ -19,13 +20,27 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+  const possibleBuildDirs = [
+    path.join(__dirname, '..', 'frontend', 'build'),
+    path.join(__dirname, '..', '..', 'frontend', 'build'),
+    path.join(__dirname, 'frontend', 'build'),
+    path.join(process.cwd(), 'frontend', 'build'),
+  ];
+
+  const frontendBuildPath = possibleBuildDirs.find((dir) => fs.existsSync(dir));
+
+  if (!frontendBuildPath) {
+    console.error('Frontend build directory not found. Searched paths:', possibleBuildDirs);
+    throw new Error('Frontend build directory not found');
+  }
+
+  app.use(express.static(frontendBuildPath));
 
   app.get('*', (req, res) => {
     if (req.path.startsWith('/api/')) {
       return res.status(404).json({ error: 'API route not found' });
     }
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.join(frontendBuildPath, 'index.html'));
   });
 }
 
