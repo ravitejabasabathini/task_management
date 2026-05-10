@@ -25,15 +25,19 @@ if (process.env.NODE_ENV === 'production') {
     path.join(__dirname, '..', '..', 'frontend', 'build'),
     path.join(__dirname, 'frontend', 'build'),
     path.join(process.cwd(), 'frontend', 'build'),
+    path.join(process.cwd(), '..', 'frontend', 'build'),
+    path.join(process.cwd(), '..', '..', 'frontend', 'build'),
+    path.join('/', 'frontend', 'build'),
   ];
 
-  const frontendBuildPath = possibleBuildDirs.find((dir) => fs.existsSync(dir));
+  const frontendBuildPath = possibleBuildDirs.find((dir) => fs.existsSync(dir) && fs.existsSync(path.join(dir, 'index.html')));
 
   if (!frontendBuildPath) {
-    console.error('Frontend build directory not found. Searched paths:', possibleBuildDirs);
+    console.error('Frontend build directory with index.html not found. Searched paths:', possibleBuildDirs);
     throw new Error('Frontend build directory not found');
   }
 
+  console.log('Serving frontend from', frontendBuildPath);
   app.use(express.static(frontendBuildPath));
 
   app.get('*', (req, res) => {
