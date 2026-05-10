@@ -117,8 +117,8 @@ body {
 /* ---------- AUTH CARD ---------- */
 
 .auth-card {
-  width: 100%;
-  max-width: 560px;
+  width: 150%;
+  max-width: 480px;
 
   background: var(--surface);
 
@@ -139,7 +139,7 @@ body {
 .auth-hero {
   position: relative;
 
-  padding: 48px 40px;
+  padding: 40px 38px;
 
   text-align: center;
   color: white;
@@ -188,7 +188,7 @@ body {
 /* ---------- FORM ---------- */
 
 .auth-form {
-  padding: 40px;
+  padding: 30px;
 
   display: flex;
   flex-direction: column;
