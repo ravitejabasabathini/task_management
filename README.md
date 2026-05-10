@@ -39,9 +39,32 @@ Simple MERN stack project management app with role-based access, authentication,
    ```
 
 ## Deployment
-- Deploy backend to Railway using `backend/server.js` and `backend/.env`
-- Deploy frontend to Railway or Vercel using build output from `frontend`
-- Set `REACT_APP_API_URL` to your deployed backend endpoint
+### One-service deployment on Railway
+This repo is ready to deploy as a single service if the backend serves the frontend build.
+
+1. In Railway, create a new project and connect the repo.
+2. Use the `backend` directory as the service root.
+3. Set the build command to:
+   ```bash
+   npm install
+   npm run heroku-postbuild
+   ```
+4. Set the start command to:
+   ```bash
+   npm start
+   ```
+5. Add Railway environment variables:
+   - `MONGO_URI`
+   - `JWT_SECRET`
+   - `PORT` (optional, Railway provides a port automatically)
+6. Railway will build the frontend and then start the backend.
+
+The frontend will be served from the backend in production, and API calls will use `/api` by default.
+
+### Separate frontend deployment option
+If you prefer hosting frontend separately (for example on Vercel):
+- Deploy the `frontend` app as a static React site.
+- Set `REACT_APP_API_URL` to your backend URL.
 
 ## Notes
 - Admin can create projects and tasks.
