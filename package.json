@@ -1,0 +1,12 @@
+{
+  "name": "ethara_project",
+  "version": "1.0.0",
+  "description": "MERN task management project",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "install-all": "cd frontend && npm install && cd ../backend && npm install",
+    "dev": "echo 'Use: cd backend && npm run dev | cd frontend && npm start'",
+    "start": "cd backend && npm start"
+  }
+}
